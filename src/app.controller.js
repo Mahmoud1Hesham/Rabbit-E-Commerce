@@ -1,4 +1,5 @@
 
+import connectDB from './db/connection.js'
 import authController from './modules/auth/auth.controller.js'
 
 const bootstrap = (app,express) =>{
@@ -9,6 +10,9 @@ const bootstrap = (app,express) =>{
       return res.status(404).json({ message: "In-valid routing" });
     });
 
+
+    //connect to the database
+connectDB()
 }
 
 export default bootstrap
