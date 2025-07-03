@@ -1,8 +1,13 @@
-import bootstrap from './src/app.controller.js'
-import express from 'express'
-const app = express()
-const port =3000
+import bootstrap from "./src/app.controller.js";
+import express from "express";
+import path from "node:path";
+import * as dotenv from "dotenv";
+dotenv.config({ path: path.resolve("./config/.env") });
 
-bootstrap(app, express)
+const app = express();
+const port = process.env.PORT || 5000;
 
-app.listen(port, ()=> console.log('Example app listening on port ${port}!'))
+//  bootstrap function to set up the app
+bootstrap(app, express);
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));

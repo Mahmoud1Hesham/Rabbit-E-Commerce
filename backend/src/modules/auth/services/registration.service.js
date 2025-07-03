@@ -1,5 +1,3 @@
-import Users from "../../../db/model/user.model.js"
-
 
 
 
