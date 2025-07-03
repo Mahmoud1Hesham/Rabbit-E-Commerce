@@ -26,6 +26,8 @@ export const verifyToken = ({
 }
 
 
+
+// Middleware to decode the token and get user information
 export const decodedToken = async({
     authorization = "",
     next
