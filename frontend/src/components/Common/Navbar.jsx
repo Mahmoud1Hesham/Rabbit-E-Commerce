@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { HiOutlineUser, HiOutlineShoppingBag, HiBars3BottomRight } from 'react-icons/hi2'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
@@ -25,13 +25,12 @@ const Navbar = () => {
                 </div>
                 {/* Center - Navigation Links */}
                 <div className="hidden md:flex space-x-6 relative">
-                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500 text-sm font-medium uppercase'>Men</Link>
-                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500 text-sm font-medium uppercase'>Women</Link>
-                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500 text-sm font-medium uppercase'>Top Wear</Link>
-                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500 text-sm font-medium uppercase'>Bottom Wear</Link>
+                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-150 relative p-2 transition-all duration-700 text-sm font-medium uppercase'>Men</Link>
+                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-150 relative p-2 transition-all duration-700 text-sm font-medium uppercase'>Women</Link>
+                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-150 relative p-2 transition-all duration-700 text-sm font-medium uppercase'>Top Wear</Link>
+                    <Link to="#" className='text-gray-700 hover:text-black hover:tracking-widest hover:scale-150 relative p-2 transition-all duration-700 text-sm font-medium uppercase'>Bottom Wear</Link>
                 </div>
                 {/* right - icons */}
-
                 {/* shopping icon */}
                 <div className="flex items-center space-x-4">
                     <Link to="/profile" className='hover:text-black'>
@@ -46,9 +45,8 @@ const Navbar = () => {
                         <SearchBar />
                     </div>
                     {/* menu */}
-                    <button  onClick={toggleNavDrawer} className='md:hidden'>
+                    <button onClick={toggleNavDrawer} className='md:hidden'>
                         <HiBars3BottomRight className='h-6 w-6 text-gray-700' />
-
                     </button>
                 </div>
             </nav>
@@ -56,7 +54,7 @@ const Navbar = () => {
             <CartDrawer drawerOpen={drawerOpen} toggleCartDrawer={toggleCartDrawer} />
             {/* Mobile navigation menu */}
             <div className={`fixed top-0 left-0 w-3/4 sm:w-1/2 md:hidden h-full bg-white shadow-lg transform
-    transition-transform duration-300 z-50 ${navDrawerOpen ? "translate-x-0" : "-translate-x-full"
+                            transition-transform duration-300 z-50 ${navDrawerOpen ? "translate-x-0" : "-translate-x-full"
                 }`}>
                 <div className="flex justify-end p-4">
                     <button onClick={toggleNavDrawer}>
@@ -67,19 +65,19 @@ const Navbar = () => {
                     <h2 className='text-xl font-semibold mb-4'>Menu</h2>
                     <nav className='space-y-4'>
                         <Link onClick={toggleNavDrawer} className='block text-gray-600 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500'>
-                        Men
+                            Men
                         </Link>
                         <Link onClick={toggleNavDrawer} className='block text-gray-600 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500'>
-                        Women
+                            Women
                         </Link>
                         <Link onClick={toggleNavDrawer} className='block text-gray-600 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500'>
-                        Top Wear
+                            Top Wear
                         </Link>
                         <Link onClick={toggleNavDrawer} className='block text-gray-600 hover:text-black hover:tracking-widest hover:scale-105 relative hover:bottom-2 p-2 transition-all duration-500'>
-                        Bottom Wear
+                            Bottom Wear
                         </Link>
                     </nav>
-                    </div>
+                </div>
             </div>
         </>
     )

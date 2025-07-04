@@ -10,6 +10,9 @@ export default {
       colors: {
         "rabbit-red": "#ea2e0e",
       },
+      transitionProperty: {
+        size: 'width, height',
+      },
     },
 
   },
