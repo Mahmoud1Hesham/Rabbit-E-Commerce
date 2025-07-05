@@ -1,6 +1,6 @@
 import Joi from 'joi';
 import { Types } from 'mongoose';
-import { genderTypes } from '../DB/model/User.model.js';
+import { genderTypes } from '../DB/model/user.model.js'; 
 
 const checkObjectId = (value,helper)=>{
   return Types.ObjectId.isValid(value) ? true : helper.message("In-valid objectId ")

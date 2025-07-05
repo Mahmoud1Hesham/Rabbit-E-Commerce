@@ -33,12 +33,12 @@ const userSchema = new  Schema({
     phone: String,
     DOB: Date,
     address: String,
-    // wishlist: [
-    //     { type: mongoose.Schema.Types.ObjectId,
-    //          ref: "Product" }],
-    // orders: [
-    //     { type: mongoose.Schema.Types.ObjectId,
-    //          ref: "Order" }],
+    wishlist: [
+        { type: mongoose.Schema.Types.ObjectId,
+             ref: "Product" }],
+    orders: [
+        { type: mongoose.Schema.Types.ObjectId,
+             ref: "Order" }],
   },
   {
     timestamps: true,

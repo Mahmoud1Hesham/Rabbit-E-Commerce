@@ -1,6 +1,6 @@
-import { userModel } from "../../../db/model/user.model.js";
+import { userModel } from "../../../DB/model/user.model.js";
 import { asyncHandler } from "../../../utils/response/error.response.js";
-import { successResponse } from "../../../utils/response/sucess.response.js";
+import { successResponse } from "../../../utils/response/success.response.js";
 import { generateHash } from "../../../utils/security/hash.security.js";
 
 

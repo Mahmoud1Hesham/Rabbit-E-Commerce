@@ -3,7 +3,7 @@ import mongoose, { model, Schema } from "mongoose";
 
 
 
-const ProductSchema = new schema({
+const ProductSchema = new Schema({
     category: {
         type:String,
         required:true
@@ -65,4 +65,4 @@ const ProductSchema = new schema({
     {timestamps:true});
 
 
-    export const ProductModel = mongoose.model.Product || model("product",ProductSchema)
+    export const ProductModel = mongoose.model.Product || model("Product",ProductSchema)

@@ -4,7 +4,7 @@
 import mongoose, { model, Schema } from "mongoose";
 import { orderModel } from "./order.model.js";
 
-const orderSchema = new  schema({
+const orderSchema = new  Schema({
     total: {
         type:Number,
         required:true
@@ -38,5 +38,5 @@ const orderSchema = new  schema({
 },{timestamps: true});
 
 
-   export const orderModel = mongoose.model.order || model("product",orderSchema)
+   export const orderModel = mongoose.model.Order || model("Order",orderSchema)
 

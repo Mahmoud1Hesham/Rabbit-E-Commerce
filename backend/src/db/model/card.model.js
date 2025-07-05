@@ -1,13 +1,5 @@
 
-
-    
-
-
 import mongoose, { model, Schema } from "mongoose";
-
-
-
-
 
 const cardSchema = new  Schema({
     subTotal: {
