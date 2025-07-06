@@ -1,10 +1,12 @@
 
 
 
+
 import mongoose, { model, Schema } from "mongoose";
 export const genderTypes = { male: "male", female: "female" };
 export const roleTypes = { admin: "admin", user: "user" };
-const userSchema = new  Schema({
+const userSchema = new Schema(
+  {
     username: {
       type: String,
       required: true,
@@ -19,6 +21,7 @@ const userSchema = new  Schema({
     },
     password: {
       type: String,
+      required: true,
     },
     gender: {
       type: String,
@@ -30,16 +33,30 @@ const userSchema = new  Schema({
       enum: Object.values(roleTypes),
       default: roleTypes.user,
     },
-    phone: String,
+    phone: { type: String, required: true, unique: true },
     DOB: Date,
-    address: String,
-    wishlist: [
-        { type: mongoose.Schema.Types.ObjectId,
-             ref: "Product" }],
-    orders: [
-        { type: mongoose.Schema.Types.ObjectId,
-             ref: "Order" }],
+    addresses: [
+      {
+        _id: {
+          type: mongoose.Schema.Types.ObjectId,
+          default: () => new mongoose.Types.ObjectId(),
+          
+        },
+        title: { type: String, required: true },
+        street: { type: String, required: true },
+        city: { type: String, required: true },
+        country: { type: String, required: true },
+      },
+    ],
+    wishlist: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
+    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+    deletedAt: { type: Date, default: null },
   },
+
   {
     timestamps: true,
   }
