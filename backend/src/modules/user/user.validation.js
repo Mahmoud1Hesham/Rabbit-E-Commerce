@@ -29,5 +29,23 @@ export const addAddressValidation = Joi.object()
     .required();
 
 
+export const addToWishlistValidation = Joi.object()
+  .keys({
+    productId: generalFields.productId.required(),
+  })
+  .required();
+
+export const deleteFromWishlistValidation = Joi.object()
+  .keys({
+    productId: generalFields.productId.required(),
+  })
+  .required();
+
+  export const changePasswordValidation = Joi.object()
+    .keys({
+      oldPassword: generalFields.password.required(),
+      newPassword: generalFields.password.required(),
+    })
+    .required();
 
 

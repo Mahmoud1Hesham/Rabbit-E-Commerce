@@ -27,20 +27,18 @@ export const generalFields = {
     minDomainSegments: 2,
     maxDomainSegments: 3,
   }),
-  code:Joi.string(),
-  password: Joi
-    .string()
-    .pattern(
-      new RegExp(
-        /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/
-      )
-    ),
+  code: Joi.string(),
+  password: Joi.string().pattern(
+    new RegExp(/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/)
+  ),
   confirmPassword: Joi.string().valid(Joi.ref("password")),
   id: Joi.string().custom(checkObjectId),
   DOB: Joi.date().less("now"),
   phone: Joi.string().pattern(new RegExp(/^(\+20|0020)?1[0-9]{9}$/)),
-  gender : Joi.string().valid(...Object.values(genderTypes)),
-  file:Joi.object(fileObject),
+  gender: Joi.string().valid(...Object.values(genderTypes)),
+  productId: Joi.string().hex().length(24),
+
+  file: Joi.object(fileObject),
 };
 
 

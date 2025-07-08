@@ -13,9 +13,17 @@ router.patch("/profile" , auth , validation(validators.updateProfileValidation),
 router.post("/profile/address" , auth ,validation(validators.addAddressValidation) , userServices.addAddress)
 router.get("/profile/addresses" , auth , userServices.getMyAddresses)
 router.delete("/address/:addressId", auth, validation(validators.deleteAddressValidation) , userServices.deletedAddress);
-
-
-
+router.get("/orders",auth, userServices.getMyOrders)
+router.post("/wishlist", auth, validation(validators.addToWishlistValidation),userServices.addToWishlist);
+router.get("/wishlist", auth, userServices.getAllWishlist);
+router.delete("/wishlist/:productId",auth,validation(validators.deleteFromWishlistValidation),userServices.deleteFromWishlist);
+router.put(
+  "/change-password",
+  auth,
+  validation(validators.changePasswordValidation),
+  userServices.changePassword
+);
+router.delete("/profile", auth, userServices.deleteMyAccount);
 
 
 

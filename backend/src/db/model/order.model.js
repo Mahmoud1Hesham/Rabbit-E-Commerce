@@ -1,42 +1,49 @@
 
+import mongoose, { Schema, model } from "mongoose";
 
-
-import mongoose, { model, Schema } from "mongoose";
-import { orderModel } from "./order.model.js";
-
-const orderSchema = new  Schema({
+const orderSchema = new Schema(
+  {
     total: {
-        type:Number,
-        required:true
+      type: Number,
+      required: true,
     },
     subtotal: {
-        type:Number,
-        required:true
+      type: Number,
+      required: true,
     },
     isDelivered: {
-        type:Boolean,
-        default:false
-
+      type: Boolean,
+      default: false,
     },
     coupon: {
-        type:String,
-        default:null
+      type: String,
+      default: null,
     },
     shipping_fee: {
-        type:Number,
-        required:true
+      type: Number,
+      required: true,
     },
-    Product: [{
-        Product_id:mongoose.schema.type.objectid,
-        quantity:Number
-    }],
+    products: [
+      {
+        product_id: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Product", 
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+          min: 1,
+        },
+      },
+    ],
     user_id: {
-        type:mongoose.schema.type.objectid,
-        ref:user,
-        required:true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-},{timestamps: true});
+  },
+  { timestamps: true }
+);
 
-
-   export const orderModel = mongoose.model.Order || model("Order",orderSchema)
-
+export const orderModel = mongoose.model.Order || model("Order", orderSchema);
