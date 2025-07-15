@@ -1,68 +1,72 @@
-
 import mongoose, { model, Schema } from "mongoose";
 
-
-
-const ProductSchema = new Schema({
+const ProductSchema = new Schema(
+  {
     category: {
-        type:String,
-        required:true
+      type: String,
+      required: true,
     },
     subcategory: {
-        type:String
+      type: String,
     },
     name: {
-
-        type:String,
-        required:true
+      type: String,
+      required: true,
+      trim: true,
     },
     description: {
-        type:String
+      type: String,
     },
     slug: {
-
-        type:String,
-        unique:true
+      type: String,
+      unique: true,
+      lowercase: true,
     },
     price: {
-        type:Number,
-        required:true
+      type: Number,
+      required: true,
     },
     stock: {
-        type:Number,
-        default0
-    },
+      type: Number,
+      default: 0, 
     store_name: {
-        type:String
+      type: String,
+    },
     },
     availability: {
-        type:Boolean,
-        default:true
+      type: Boolean,
+      default: true,
     },
-    isDeleted:{
-        type:Date,
-        default:null
+    isDeleted: {
+      type: Boolean, 
+      default: false,
     },
     sale: {
-        type:Boolean,
-        default:false
+      type: Boolean,
+      default: false,
     },
     user_id: {
-        type:mongoose.schema.Types.Objectid,
-        ref:"User"
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: "User",
     },
     rate: {
-        type:Number,
-        default:0
+      type: Number,
+      default: 0,
     },
     comments: {
-        type:String
+      type: String,
     },
-    Images: [{
-        type:String
-    }]},
-    // list of two image URLs
-    {timestamps:true});
+    images: [
+      
+      {
+        type: String,
+      },
+    ],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-
-    export const ProductModel = mongoose.model.Product || model("Product",ProductSchema)
+export const ProductModel =
+  mongoose.models.Product || model("Product", ProductSchema);
