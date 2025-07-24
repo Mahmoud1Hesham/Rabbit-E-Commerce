@@ -8,7 +8,7 @@ const Hero = () => {
         <div className="text-center text-white p-6">
             <h1 className=' text-4xl md:text-9xl font-bold tracking-tighter uppercase mb-4 hover:tracking-widest hover:scale-125 transition-all duration-1000'>Vacation <br /> Ready</h1>
         <p className="text-sm tracking-widest md:text-lg mb-6">Explore Our Vacation-Ready Outfits with fast worldwide shipping.</p>
-        <Link to="#" className='bg-white text-gray-950 px-6 py-2 rounded-sm text-lg'>Shop Now!</Link>
+        <Link to="#" className='bg-white text-gray-950 hover:bg-black hover:text-white hover:py-4 hover:rounded-md transition-all duration-300 ease-in-out px-6 py-2 rounded-sm text-lg'>Shop Now!</Link>
         </div>
     </div>
   </section>

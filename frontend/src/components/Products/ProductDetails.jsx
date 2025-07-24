@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { toast } from 'sonner';
+import ProductGrid from './ProductGrid.jsx';
 
 const selectedProduct = {
   name: "Stylish Jacket",
@@ -21,14 +23,90 @@ const selectedProduct = {
   ]
 }
 
+const similarProducts = [
+  {
+    _id: 1,
+    name: "Stylish Jacket",
+    price: 120,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=3",
+        altText: "Stylish Jacket 1",
+      },
+      
+    ]
+  },
+  {
+    _id: 1,
+    name: "Stylish Jacket",
+    price: 120,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=4",
+        altText: "Stylish Jacket 1",
+      },
+      
+    ]
+  },
+  {
+    _id: 1,
+    name: "Stylish Jacket",
+    price: 120,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=5",
+        altText: "Stylish Jacket 1",
+      },
+      
+    ]
+  },
+  {
+    _id: 1,
+    name: "Stylish Jacket",
+    price: 120,
+    images: [
+      {
+        url: "https://picsum.photos/500/500?random=6",
+        altText: "Stylish Jacket 1",
+      },
+      
+    ]
+  }
+]
+
 const ProductDetails = () => {
 
   const [mainImage, setMainImage] = useState("")
 
   const [selectedSize, setSelectedSize] = useState("");
-  const [selectedColor, setSelectedColor] = useState("'");
+  const [selectedColor, setSelectedColor] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+  const handleAddToCart = () => {
+    if (!selectedSize || !selectedColor) {
+      let message = "Please select ";
+
+      if (!selectedSize && !selectedColor) {
+        message += "size and color";
+      } else if (!selectedSize) {
+        message += "size";
+      } else {
+        message += "color";
+      }
+
+      message += " before adding to cart!";
+      toast.error(message, { duration: 1000 });
+      return;
+    }
+
+    setIsButtonDisabled(true);
+
+    setTimeout(() => {
+      toast.success("Product has been added to cart successfully ! 🎉", { duration: 1000 });
+      setIsButtonDisabled(false);
+    }, 500);
+  };
 
 
   useEffect(() => {
@@ -129,7 +207,9 @@ const ProductDetails = () => {
               </div>
             </div>
 
-            <button className="bg-black text-white py-2 px-6 rounded w-full mb-4"> ADD TO CART </button>
+            <button onClick={handleAddToCart} disabled={isButtonDisabled} className={`bg-black text-white py-2 px-6 rounded w-full mb-4${isButtonDisabled ? 'cursor-not-allowed opacity-50' : 'bg-gray-900'}`}>
+
+              {isButtonDisabled ? "Adding ..." : "ADD TO CART"} </button>
             <div className="mt-10 text-gray-700">
               <h3 className="text-xl font-bold mb-4">Characteristics:</h3>
               <table className="w-full text-left text-sm text-gray-600">
@@ -146,6 +226,10 @@ const ProductDetails = () => {
               </table>
             </div>
           </div>
+        </div>
+        <div className="mt-20">
+          <h2 className="text-2xl text-center font-medium mb-4">You May Also Like</h2>
+          <ProductGrid products={similarProducts} />
         </div>
       </div>
     </div>
